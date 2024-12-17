@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 
 const JobApply = () => {
     const { id } = useParams();
@@ -26,7 +26,7 @@ const JobApply = () => {
             resume
         }
 
-        fetch('http://localhost:5000/job-applications', {
+        fetch('https://job-portal-server-for-recruiter-part3-beta.vercel.app/job-applications', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

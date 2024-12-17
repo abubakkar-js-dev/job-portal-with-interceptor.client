@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import AuthContext from './AuthContext';
+import axios from 'axios';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import React, { useEffect, useState } from 'react';
 import auth from '../../firebase/firebase.init';
+import AuthContext from './AuthContext';
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -34,7 +35,24 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log('state captured', currentUser)
-            setLoading(false);
+            if(currentUser?.email){
+                const user = {email: currentUser.email};
+                axios.post('https://job-portal-server-for-recruiter-part3-beta.vercel.app/jwt',user,{
+                    withCredentials: true,
+                })
+                .then(res =>{
+                    console.log('when login',res.data);
+                    setLoading(false);
+                })
+            }else{
+                axios.post('https://job-portal-server-for-recruiter-part3-beta.vercel.app/logOut',{},{
+                    withCredentials: true,
+                })
+                .then(res => {
+                    console.log('When log out: ',res.data);
+                })
+            }
+
         })
 
         return () => {
