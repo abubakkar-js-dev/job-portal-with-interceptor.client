@@ -90,10 +90,10 @@ const AddJob = () => {
                         <label className="label">
                             <span className="label-text">Salary Range</span>
                         </label>
-                        <input type="text" name='min' placeholder="Min" className="input input-bordered" required />
+                        <input type="number" name='min' placeholder="Min" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
-                        <input type="text" name='max' placeholder="Max " className="input input-bordered" required />
+                        <input type="number" name='max' placeholder="Max " className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <select defaultValue="Currency" name="currency" className="select select-ghost w-full max-w-xs">
@@ -145,7 +145,7 @@ const AddJob = () => {
                     <label className="label">
                         <span className="label-text">HR Email</span>
                     </label>
-                    <input type="text" defaultValue={user?.email} name='hr_email' placeholder="HR Email" className="input input-bordered" required />
+                    <input type="text" defaultValue={user?.email} name='hr_email' placeholder="HR Email" className="input input-bordered" required readOnly />
                 </div>
                 {/* application Deadline */}
                 <div className="form-control">
