@@ -12,6 +12,7 @@ import Register from "../pages/Register/Register";
 import SignIn from "../pages/SignIn/SignIn";
 import ViewApplications from "../pages/ViewApplications/ViewApplications";
 import PrivateRoute from "./PrivateRoute";
+import AllJobs from "../pages/AllJobs/AllJobs";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/allJobs',
+        element: <AllJobs />,
       },
       {
         path: 'jobs/:id',
